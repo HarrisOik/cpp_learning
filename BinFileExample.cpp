@@ -27,6 +27,7 @@ int main()
         cout << "Cannot open file!" << endl;
         return 1;
     }
+    
     Student* StuArray; 
 	StuArray = new (nothrow) Student[N];
 
@@ -53,6 +54,7 @@ int main()
         cout << "Error writing to file!" << endl;
         return 1;
     }
+    
     delete[] StuArray;
 
     ifstream rf("student_list.bin", ios::out | ios::binary);
@@ -64,9 +66,11 @@ int main()
 
     Student* PrintArray;
 	PrintArray = new (nothrow) Student[N];
+	
     for (int i = 0;i < N;i++)
         rf.read((char *) &PrintArray[i], sizeof(Student));
     rf.close();
+    
     if(!rf.good())
     {
         cout << "Error reading file!" << endl;
